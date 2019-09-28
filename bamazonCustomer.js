@@ -84,7 +84,7 @@ var runCustomer = function() {
                         {
                             name: "productQuantity",
                             type: "input",
-                            message: "How many units of the product they would like to buy",
+                            message: "How many units of the product you would like to buy",
                             validate: function(value) {
                                 if (isNaN(value) === false) return true;
                                 else return false;
@@ -115,6 +115,11 @@ var runCustomer = function() {
                                 runCustomer();
                             });
 
+                        } else {
+                            console.log(divider);
+                            console.log("\x1b[32m%s\x1b[0m", "Please choose quantity no more than: " + res[userID].stock_quantity);
+                            console.log(divider);
+                            runCustomer();
                         }
 
                     });
