@@ -19,7 +19,6 @@ var Table = require('cli-table');
 
 var divider = "\n====================================================================\n";
 
-var red = "\x1b[31m%s\x1b[0m";
 
 var green = "\x1b[32m%s\x1b[0m";
 
@@ -160,7 +159,7 @@ var addInventory = function() {
 
                 name: "productQuantity",
                 type: "input",
-                message: "How many units of the product you would like to add?",
+                message: "How many units of the product would you like to add?",
                 validate: function(value) {
                     if (isNaN(value) === false) return true;
                     else return true;
@@ -211,7 +210,7 @@ var addProduct = function() {
         {
             name: "departmentName",
             type: "list",
-            message: "Choise Department",
+            message: "Choose Department",
             choices: ["TRANSMISSION", "ENGINE", "ELECTRICAL", "BODY"]
         },
         {

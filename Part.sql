@@ -13,3 +13,4 @@ CREATE TABLE product (
     stock_quantity DECIMAL(12) NOT NULL,
     PRIMARY KEY (item_id)
 )
+
