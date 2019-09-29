@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "dadoshka0706",
+    password: "<yourRootPassword>",
     database: "bamazong_db"
 });
 
