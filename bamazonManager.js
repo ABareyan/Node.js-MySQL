@@ -28,7 +28,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "<yourRootPassword>",
+    password: "dadoshka0706",
     database: "bamazong_db"
 });
 
@@ -200,57 +200,70 @@ var addInventory = function() {
 };
 
 var addProduct = function() {
-    inquirer.prompt([
 
-        {
-            name: "productName",
-            type: "input",
-            message: "Type Product name"
-        },
-        {
-            name: "departmentName",
-            type: "list",
-            message: "Choose Department",
-            choices: ["TRANSMISSION", "ENGINE", "ELECTRICAL", "BODY"]
-        },
-        {
-            name: "productPrice",
-            type: "input",
-            message: "Type the price"
-        },
-        {
-            name: "productQuantity",
-            type: "input",
-            message: "Type the quantoty"
+    // array with departments name
+    var depatrmentList = [];
+
+    var query = "SELECT * FROM departments";
+    connection.query(query, function(error, response) {
+        if (error) throw error;
+
+        for (var i = 0; i < response.length; i++) {
+            depatrmentList.push(response[i].department_name);
         }
 
-    ]).then(function(answer) {
-
-        var productName = answer.productName.toUpperCase();
-        var departmentName = answer.departmentName.toUpperCase();
-        var productPrice = parseFloat(answer.productPrice);
-        var productQuantity = parseFloat(answer.productQuantity)
-
-        var query = "INSERT INTO product SET ?";
-        connection.query(query, [
+        inquirer.prompt([
 
             {
-                product_name: productName,
-                department_name: departmentName,
-                price: productPrice,
-                stock_quantity: productQuantity
+                name: "productName",
+                type: "input",
+                message: "Type Product name"
+            },
+            {
+                name: "departmentName",
+                type: "list",
+                message: "Choose Department",
+                choices: depatrmentList
+            },
+            {
+                name: "productPrice",
+                type: "input",
+                message: "Type the price"
+            },
+            {
+                name: "productQuantity",
+                type: "input",
+                message: "Type the quantoty"
             }
-        ], function(err, res) {
-            if (err) throw err;
 
-            console.log(divider);
-            console.log(green, productQuantity + " units of " + productName + " with price " + productPrice + "$ added in " + departmentName + " department ");
-            console.log(divider);
+        ]).then(function(answer) {
 
-            runManager();
+            var productName = answer.productName.toUpperCase();
+            var departmentName = answer.departmentName.toUpperCase();
+            var productPrice = parseFloat(answer.productPrice);
+            var productQuantity = parseFloat(answer.productQuantity)
+
+            var query = "INSERT INTO product SET ?";
+            connection.query(query, [
+
+                {
+                    product_name: productName,
+                    department_name: departmentName,
+                    price: productPrice,
+                    stock_quantity: productQuantity
+                }
+            ], function(err, res) {
+                if (err) throw err;
+
+                console.log(divider);
+                console.log(green, productQuantity + " units of " + productName + " with price " + productPrice + "$ added in " + departmentName + " department ");
+                console.log(divider);
+
+                runManager();
+            });
+
         });
-
-    });
+    })
 };
 
 

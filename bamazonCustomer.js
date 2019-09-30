@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "<yourRootPassword>",
+    password: "dadoshka0706",
     database: "bamazong_db"
 });
 
@@ -93,12 +93,25 @@ var runCustomer = function() {
 
                     ]).then(function(answer) {
 
+
                         var userID = answer.productID - 1;
+
+                        console.log(res[userID]);
+
                         var userQuantity = answer.productQuantity;
+                        var totalCost = userQuantity * res[userID].price;
+                        var totalData = res[userID].product_sales + totalCost;
+
+
+                        console.log(totalCost);
+                        console.log(totalData);
+
+
+
 
                         if (userQuantity < res[userID].stock_quantity) {
                             console.log(divider);
-                            console.log("\x1b[32m%s\x1b[0m", "Your total cost: " + userQuantity * res[userID].price + "$ + taxes");
+                            console.log("\x1b[32m%s\x1b[0m", "Your total cost: " + totalCost + "$ + taxes");
                             console.log(divider);
 
                             var query = "UPDATE product SET ? WHERE ?";
@@ -106,11 +119,14 @@ var runCustomer = function() {
 
                                 {
                                     stock_quantity: res[userID].stock_quantity - userQuantity,
+                                    product_sales: totalData
                                 },
                                 {
                                     item_id: res[userID].item_id
                                 }
+
                             ], function(err, res) {
+
                                 if (err) throw err;
                                 runCustomer();
                             });
