@@ -233,7 +233,7 @@ var addProduct = function() {
             {
                 name: "productQuantity",
                 type: "input",
-                message: "Type the quantoty"
+                message: "Type the quantity"
             }
 
         ]).then(function(answer) {
