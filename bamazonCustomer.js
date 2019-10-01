@@ -93,23 +93,13 @@ var runCustomer = function() {
 
                     ]).then(function(answer) {
 
-
                         var userID = answer.productID - 1;
-
-                        console.log(res[userID]);
 
                         var userQuantity = answer.productQuantity;
                         var totalCost = userQuantity * res[userID].price;
                         var totalData = res[userID].product_sales + totalCost;
 
-
-                        console.log(totalCost);
-                        console.log(totalData);
-
-
-
-
-                        if (userQuantity < res[userID].stock_quantity) {
+                        if (userQuantity <= res[userID].stock_quantity) {
                             console.log(divider);
                             console.log("\x1b[32m%s\x1b[0m", "Your total cost: " + totalCost + "$ + taxes");
                             console.log(divider);

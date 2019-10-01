@@ -6,3 +6,4 @@ The app take in orders from customers and deplete stock from the store's invento
 
 ## Challenge #1: Customer View
 
+![Sceen1] (screen/Screen1.gif)
