@@ -23,7 +23,7 @@ The app take in orders from customers and deplete stock from the store's invento
 
 ![Screen2](screen/screenManager1.gif)
 
-* Next message, "Add to Inventory", lets to the manager to add inventory
+* Next message, "Add to Inventory", allow the manager to add inventory
 
 ![Screen3](screen/screenManager2.gif)
 
@@ -47,4 +47,4 @@ The app take in orders from customers and deplete stock from the store's invento
 
 ## License
 
-No license agreements, do as you will with the program. 
+No license agreements. 
