@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "yourpasswordhere",
+    password: "your password here",
     database: "bamazong_db"
 });
 
@@ -49,9 +49,11 @@ var runCustomer = function() {
 
 
         for (var i = 0; i < res.length; i++) {
-            table.push([res[i].item_id, res[i].product_name,
-                res[i].department_name, res[i].price, res[i].stock_quantity
-            ]);
+            if (res[i].stock_quantity > 0) {
+                table.push([res[i].item_id, res[i].product_name,
+                    res[i].department_name, res[i].price, res[i].stock_quantity
+                ]);
+            }
         }
         console.log(table.toString());
 
