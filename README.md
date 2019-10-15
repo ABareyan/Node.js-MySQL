@@ -17,7 +17,7 @@ The app take in orders from customers and deplete stock from the store's invento
 
 ## Challenge #2: Manager View
 
-* The first message, "View Products for Sale", shows to the manager the list every available item
+* The first message, "View Products for Sale", shows to the manager the list every item even if quantity is 0
 
 * The second message, "View Low Inventory", shows to the manager list all items with an inventory count lower than he/she wants to see.
 
@@ -30,6 +30,14 @@ The app take in orders from customers and deplete stock from the store's invento
 * The last one, "Add New Product", allow the manager to add a completely new product to the store. 
 
 ![Screen4](screen/screenManager3.gif)
+
+## Challenge #3: Supervisor View 
+
+* The first message, "View Product Sales by Departmen", shows to the supervisor the list of deparments with over head costs, product sales, and total profit.
+
+* Next message, "Create New Department", allow the supervisor to add deparments
+
+
 
 ## Using
 

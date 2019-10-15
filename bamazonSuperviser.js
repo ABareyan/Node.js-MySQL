@@ -28,7 +28,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "your password here",
+    password: "<yourRootPassword>",
     database: "bamazong_db"
 });
 
@@ -97,9 +97,6 @@ var viewProducts = function() {
 
         runSupervisor();
     });
-
-
-
 }
 
 
@@ -149,6 +146,7 @@ var createDepartment = function() {
             if (!depatrmentList.includes(answer.departmentName.toUpperCase())) {
 
                 var query = "INSERT INTO departments SET ?";
+
                 connection.query(query, [
 
                     {
@@ -162,9 +160,12 @@ var createDepartment = function() {
                     console.log(divider);
                     console.log(green, answer.departmentName.toUpperCase() + " with overhead costs: " + parseFloat(answer.overHead) + " has added in departments");
                     console.log(divider);
+                    console.log(green, "Please contact with Manager to insert the product in " + answer.departmentName.toUpperCase() + " department");
+                    console.log(divider);
 
                     runSupervisor();
                 });
+
             } else {
                 console.log(divider);
                 console.log(green, "You already have " + answer.departmentName.toUpperCase() + " department in your store");
