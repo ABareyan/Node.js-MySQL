@@ -35,8 +35,11 @@ The app take in orders from customers and deplete stock from the store's invento
 
 * The first message, "View Product Sales by Departmen", shows to the supervisor the list of deparments with over head costs, product sales, and total profit.
 
+![Screen5](screen/screenSupervisor1.gif)
+
 * Next message, "Create New Department", allow the supervisor to add deparments
 
+![Screen6](screen/screenSupervisor2.gif)
 
 
 ## Using
